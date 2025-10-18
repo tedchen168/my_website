@@ -56,9 +56,9 @@
 			.container {
 				max-width: 960px;
 				width: 100%;
-				padding: 2rem;
+				padding: 2vw;
 				box-sizing: border-box;
-				text-align: center;
+				text-align: left;
 			}
 
 			body, html {
@@ -66,6 +66,11 @@
 				padding: 0;
 				width: 100%;
 				overflow-x: hidden;
+			}
+
+			section {
+				background-image: url('images/background.jpg');
+  				background-repeat: repeat;
 			}
 
 			@keyframes slideUp {
@@ -178,6 +183,122 @@
 			#video-background.slide-up {
 				animation: slideUpFadeOut 1s ease forwards;
 			}
+
+			.profile-section {
+				display: flex;
+				align-items: center;
+				gap: 30px;
+				margin-top: -80px;
+				margin-bottom: 40px;
+				margin-left: 40px;
+				margin-right: 40px;
+				position: relative;
+				z-index: 10;
+				flex-wrap: wrap;
+			}
+
+			.profile-photo img {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				border: 4px solid white;
+				object-fit: cover;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			}
+
+			.profile-text {
+				background: #ffffff;
+				padding: 10px 10px;
+				line-height: 1.2;
+				border-radius: 12px;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+				flex: 1;
+				min-width: 250px;
+			}
+
+			.profile-text h3 {
+				margin-top: 10px;
+				color: black;
+			}
+
+			.timeline { position: relative; margin: 0 auto; max-width: 960px; padding-left: 2.25rem; }
+			.timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 3px; border-radius: 3px; }
+			.timeline p { position: relative; margin: 1.25rem 0; padding: 0.9rem 1rem; border-radius: 8px; max-width: 100%; }
+			.timeline p::before { content: ''; position: absolute; left: -28px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; border-radius: 50%; box-sizing: content-box; }
+			.date { display: block; font-size: 0.78rem; margin-bottom: 0.25rem; color: #fbfbff; }
+			.title { display: block; font-weight: 700; margin-bottom: 0.35rem; color: #ffffff; }
+			.desc { margin: 0; line-height: 1.4; color: #e0e7ff; }
+
+			.regular { background: #fbfbff; }
+			.regular::before { border: 3px solid #4acaa8; background: #ffffff; }
+			.timeline.regular::before { background: #e0e7ff; }
+
+			.spaceship { background: rgba(255,255,255,0.05); color: #f3f4f6; box-shadow: 0 0 8px rgba(79,70,229,0.5); }
+			.spaceship::before { border: 3px solid #4acaa8; background: #0f172a; }
+			.nose::before { background: radial-gradient(circle at 30% 30%, #fbbf24, #f97316); }
+			.body::before { background: linear-gradient(180deg, #3b82f6, #1e3a8a); }
+			.engine::before { background: radial-gradient(circle at center, #ef4444, #b91c1c); }
+			.wings::before { background: linear-gradient(45deg, #10b981, #047857); }
+
+			.sparkle { 
+				list-style: none;
+  				padding-left: 1.2em;
+			}
+
+			.sparkle li::before {
+				content: "✧";
+				color: gold;
+				display: inline-block;
+				width: 1em;
+				margin-left: -1.2em;
+			}
+
+			.reviews-container {
+				max-width: 800px;
+				width: 100%;
+				background: #0b1220;
+				border-radius: 12px;
+				padding: 20px;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+				overflow-y: auto;
+				max-height: 80vh;
+				margin-bottom: 20px;
+			}
+
+			.review {
+				background: rgba(255,255,255,0.05);
+				border-radius: 8px;
+				padding: 16px;
+				margin-bottom: 16px;
+			}
+
+			.review:last-child { 
+				margin-bottom: 0; 
+			}
+
+			.review h3 {
+				margin: 0;
+				font-size: 1.1em;
+			}
+				
+			.review .relation {
+				font-size: 0.9em;
+				color: #9aa4b2;
+				margin-bottom: 4px;
+			}
+
+			.review .date {
+				font-size: 0.8em;
+				color: #9aa4b2;
+				margin-bottom: 8px;
+			}
+
+			.review p {
+				margin: 0;
+				line-height: 1.5;
+				color: #dbe9ff;
+			}
+
 	    </style>
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
@@ -220,15 +341,15 @@
 				<header>
 					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
 					<h1 id="logo"><a href="#">Ted Chen</a></h1>
-					<p>I got reprogrammed by a rogue AI<br />
-					and now I'm totally cray</p>
+					<p>Placeholder</p>
 				</header>
 				<nav id="nav">
 					<ul>
 						<li><a href="#one" class="active">About</a></li>
-						<li><a href="#two">Things I Can Do</a></li>
-						<li><a href="#three">A Few Accomplishments</a></li>
-						<li><a href="#four">Contact</a></li>
+						<li><a href="#two">Timeline</a></li>
+						<li><a href="#three">Hobbies and Works</a></li>
+						<li><a href="#four">Map</a></li>
+						<li><a href="#five">References</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -253,57 +374,134 @@
 								<div class="image main" data-position="center">
 									<img src="images/banner.jpg" alt="" />
 								</div>
+
+								<div class="profile-section">
+									<div class="profile-photo">
+										<img src="images/avatar.jpg" alt="Profile Photo" />
+									</div>
+									<div class="profile-text">
+										<h3>Basic self-introduction</h3>
+									</div>
+								</div>
+
 								<div class="container">
-									<header class="major">
-										<h2>Read Only</h2>
-										<p>Just an incredibly simple responsive site<br />
-										template freebie by <a href="http://html5up.net">HTML5 UP</a>.</p>
-									</header>
-									<p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
+									<h3>⭐ Basic Info</h3>
+									<p>Name. Birth.</p>
+
+									<div class="timeline" role="list">
+										<p role="listitem" class="regular">
+											<span class="date">Jan 10, 2024</span>
+											<span class="title">Current School</span>
+											<span class="desc">Current School</span>
+										</p>
+
+										<p role="listitem" class="regular">
+											<span class="date">Jan 10, 2020</span>
+											<span class="title">Last School</span>
+											<span class="desc">Last School</span>
+										</p>
+									</div>
+									<h3>⭐ Skills / Awards</h3>
+									<img src="images/pic01.jpg" alt="Award" />
 								</div>
 							</section>
 
 						<!-- Two -->
 							<section id="two">
 								<div class="container">
-									<h3>Things I Can Do</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.</p>
-									<ul class="feature-icons">
-										<li class="icon solid fa-code">Write all the code</li>
-										<li class="icon solid fa-cubes">Stack small boxes</li>
-										<li class="icon solid fa-book">Read books and stuff</li>
-										<li class="icon solid fa-coffee">Drink much coffee</li>
-										<li class="icon solid fa-bolt">Lightning bolt</li>
-										<li class="icon solid fa-users">Shadow clone technique</li>
-									</ul>
+									<h3>⭐ Timeline</h3>
+									<div class="timeline" role="list">
+									<p role="listitem" class="spaceship nose">
+									<span class="date">Placeholder</span>
+									<span class="title">Placeholder</span>
+									<span class="desc">Placeholder</span>
+									</p>
+									<p role="listitem" class="spaceship body">
+									<span class="date">Placeholder</span>
+									<span class="title">Placeholder</span>
+									<span class="desc">Placeholder</span>
+									</p>
+									<p role="listitem" class="spaceship wings">
+									<span class="date">Placeholder</span>
+									<span class="title">Placeholder</span>
+									<span class="desc">Placeholder</span>
+									</p>
+									<p role="listitem" class="spaceship engine">
+									<span class="date">Placeholder</span>
+									<span class="title">Placeholder</span>
+									<span class="desc">Placeholder</span>
+									</p>
+									</div>
 								</div>
 							</section>
 
 						<!-- Three -->
 							<section id="three">
 								<div class="container">
-									<h3>A Few Accomplishments</h3>
+									<center><img src="images/taurus.png" alt="taurus" width="256" height="480"/></center>
+									<h3>⭐ Hobbies</h3>
 									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
 									<div class="features">
 										<article>
 											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
 											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+												<h4>Favorite Books</h4>
+												<p>
+													<ul class="sparkle">
+														<li>The Adventures of Tintin</li>
+														<li>Greek Mythology</li>
+														<li>Harry Potter</li>
+														<li>The Three-Body Problem</li>
+														<li>History of East Asia</li>
+													</ul>
+												</p>
 											</div>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
 											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+												<h4>Favorite Sports</h4>
+												<p>
+													<ul class="sparkle">
+														<li>Badminton</li>
+														<li>Swimming</li>
+														<li>Riding</li>
+														<li>Fitness</li>
+													</ul>
+												</p>
 											</div>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
 											<div class="inner">
-												<h4>Snapped dark matter in the wild</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+												<h4>Favorite Movies / Shows</h4>
+												<p>
+													<ul class="sparkle">
+														<li>Cars</li>
+														<li>Wall-E</li>
+														<li>Zootopia</li>
+														<li>Monsters University</li>
+														<li>Coco</li>
+														<li>Marvel Cinematic Universe</li>
+														<li>Green Book</li>
+														<li>Oppenheimer</li>
+														<li>Inception</li>
+														<li>Chernobyl</li>
+													</ul>
+												</p>
+										</article>
+									</div>
+									<center><img src="images/leo.png" alt="leo" width="427" height="480"/></center>
+									<h3>⭐ Works</h3>
+									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Ted's thinking and understanding about the universe</h4>
+												<p>
+													Explanation
+												</p>
 											</div>
 										</article>
 									</div>
@@ -313,8 +511,37 @@
 						<!-- Four -->
 							<section id="four">
 								<div class="container">
-									<h3>Contact Me</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+									<h3>⭐ Placeholder for the Map</h3>
+								</div>
+							</section>
+
+						<!-- Five -->
+							<section id="five">
+								<div class="container">
+									<h3>⭐ References</h3>
+										<div class="reviews-container">
+										<div class="review">
+										<h3>Ms. Mai</h3>
+										<div class="relation">Mother</div>
+										<p>As Ted's mom, i had witnessed Ted's growth for a whole journey so far, with a mindset that shifts from expecting Ted to achieve great success to allowing him to grow freely on his own. In my view, Ted Chen is a child who enjoys communicating, asking questions and playing pranks, but he can also calm down to read and think deeply. Perhaps it is precisely this innate pure curiosity and desire to explore that has determined his love for this major. When he was a kid, he is very fond of asking "Why", "Why is 1+1 equal to 2", "Why is the earth round"... He not only wants to know the answer, but also wants to know why he got this answer. I hope I can cultivate Ted to become "a man who can survive everywhere", and what i need to do is respect and support his choice.</p>
+										</div>
+										<div class="review">
+										<h3>Dr. Zhao</h3>
+										<div class="relation">Instructor</div>
+										<p>I am the professional instructor of the astronomical scientific research activities in Xinjiang in Aug, 2024. The impression Ted Chen gave me was he performed exceptionally well and embracing all the difficulties we met well, like bearing the large temperature difference between day and night, mosquito bites, and the fatigue from staying up late, etc. Ted always got up early to prepare for the observation and would kindly wake up another sleeping classmates. His insistance and passion could be identified as Ted is a student who is interested in astronomy and has sufficient curiosity about the exploration of the universe.</p>
+										</div>
+										<div class="review">
+										<h3>Meimei</h3>
+										<div class="relation">Teacher</div>
+										<p>I had guided and witnessed Ted's whole trip in Yale 2024 Summer School Program. During the summer school interview, Ted particularly hoped that the course arrangement would include content related to astronomy and thus he expressed his expectation sincerely to won the adjustment of scheduel successfully. He was confident and responsible for the questions he raised in class after his careful thinking. Also, i had noticed Ted was also an emotionally stable and observant child who can get along well with a group of peers with different personalities from the first time they met each other, and he was willing to take the initiative to help the teacher with tasks.</p>
+										</div>
+										<div class="review">
+										<h3>Remy</h3>
+										<div class="relation">Psychological Mentor</div>
+										<p>The first time i met Ted, i could tell at a glance that he was a child in pursuit of the essence of things who prefer to know why is the answer and understand the principle. So I advised Ms.Mai not to measure Ted by "scores" instead to protect Ted’s desire to explore the world freely. And after i realized Ted’s great desire to explore the origin of humanity and the end of the universe, i cooperated with Ms.Mai to provide a sufficiently relaxed environment allowed him to develop his interests. After twelve years acquaintance with Ted and Ms.Mai, i had became best friends with this mother and son, and this protecting relationship will develop continuously.</p>
+										</div>
+										</div>
+									<h3>⭐ Contact Me</h3>
 									<form method="post" action="#">
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
@@ -332,7 +559,7 @@
 								</div>
 							</section>
 
-						<!-- Five -->
+						<!-- Five 
 							<section id="five">
 								<div class="container">
 									<h3>Elements</h3>
@@ -660,6 +887,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 								</div>
 							</section>
+							-->
 					</div>
 
 			</div>
