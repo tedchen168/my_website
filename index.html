@@ -5,561 +5,762 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Ted Chen</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<style>
-		    video {
-		      width: 100%;
-		      height: 100vh;
-		      object-fit: cover;
-		      position: absolute;
-		      top: 0;
-		      left: 0;
-		    }
-		
-		    .content {
-		      position: absolute;
-		      top: 50%;
-		      left: 50%;
-		      transform: translate(-50%, -50%);
-		      color: white;
-		      font-size: 2rem;
-		      text-align: center;
-		      font-family: Arial, sans-serif;
-		    }
 
-			#video-background {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				overflow: hidden;
-				z-index: -1;
+<head>
+	<title>Ted Chen</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<style>
+		video {
+			width: 100%;
+			height: 100vh;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			font-size: 2rem;
+			text-align: center;
+			font-family: Arial, sans-serif;
+		}
+
+		#video-background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			z-index: -1;
+		}
+
+		#bg-video {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+
+		#main {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+		}
+
+		.container {
+			max-width: 960px;
+			width: 100%;
+			padding: 2vw;
+			box-sizing: border-box;
+			text-align: left;
+		}
+
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			overflow-x: hidden;	
+		}
+
+		#wrapper {
+			background-image: url('images/aibackground.jpg');
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			background-size: cover;
+		}
+
+		section {
+			background-color: transparent;
+		}
+
+		@keyframes slideUp {
+			0% {
+				transform: translateY(0%);
+				opacity: 1;
 			}
 
-			#bg-video {
-				object-fit: cover;
-				width: 100%;
-				height: 100%;
-			}
-
-			#main {
-				width: 100%;
-				display: flex;
-				justify-content: center;
-			}
-
-			.container {
-				max-width: 960px;
-				width: 100%;
-				padding: 2vw;
-				box-sizing: border-box;
-				text-align: left;
-			}
-
-			body, html {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				overflow-x: hidden;
-			}
-
-			section {
-				background-image: url('images/background.jpg');
-  				background-repeat: repeat;
-			}
-
-			@keyframes slideUp {
-				0% {
-					transform: translateY(0%);
-					opacity: 1;
-				}
-				100% {
-					transform: translateY(-100%);
-					opacity: 0;
-				}
-			}
-
-			@keyframes slideUpFadeOut {
-				0% {
-					transform: translateY(0);
-					opacity: 1;
-				}
-				100% {
-					transform: translateY(-100%);
-					opacity: 0;
-					visibility: hidden;
-				}
-			}
-
-			@keyframes fadeIn {
-				from {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			#video-background.slide-up {
-				animation: slideUp 1s ease-in-out forwards;
-			}
-
-			#wrapper {
-				transition: opacity 1s ease-in-out;
+			100% {
+				transform: translateY(-100%);
 				opacity: 0;
-				pointer-events: none;
 			}
+		}
 
-			#wrapper.show {
+		@keyframes slideUpFadeOut {
+			0% {
+				transform: translateY(0);
 				opacity: 1;
 			}
 
-			body.sidebar-hidden #header {
-				transform: translateX(100%);
-				transition: transform 0.3s ease-in-out;
+			100% {
+				transform: translateY(-100%);
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
 			}
 
-			#header {
-				position: fixed;
-				top: 0;
-				right: 0;
-				width: 300px;
-				height: 100%;
-				background: #1a1a1a;
-				color: white;
-				overflow-y: auto;
-				transition: transform 0.3s ease-in-out;
-				transform: translateX(0);
-				z-index: 999;
-			}
-
-			#toggle-sidebar {
-				background-color: #333;
-				color: #fff;
-				border: none;
-				padding: 0.5rem 1rem;
-				font-size: 1.2rem;
-				cursor: pointer;
-				border-radius: 5px;
-				z-index: 1001;
-			}
-
-			#sidebar {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 300px;
-				height: 100vh;
-				z-index: 9999;
-				background: #222;
-				color: white;
-			}
-
-			body.sidebar-hidden #wrapper {
-				margin-right: 0;
-			}
-
-			body.video-active {
-				overflow: hidden;
-			}
-
-			body.content-visible #wrapper {
+			to {
 				opacity: 1;
-				pointer-events: auto;
+				transform: translateY(0);
 			}
+		}
 
-			body.content-visible #main {
-				display: block;
-				animation: fadeIn 1s ease forwards;
-			}
+		#video-background.slide-up {
+			animation: slideUp 1s ease-in-out forwards;
+		}
 
-			#video-background.slide-up {
-				animation: slideUpFadeOut 1s ease forwards;
-			}
+		#wrapper {
+			transition: opacity 1s ease-in-out;
+			opacity: 0;
+			pointer-events: none;
+		}
 
-			.profile-section {
-				display: flex;
+		#wrapper.show {
+			opacity: 1;
+		}
+
+		body.sidebar-hidden #header {
+			transform: translateX(100%);
+			transition: transform 0.3s ease-in-out;
+		}
+
+		#header {
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 300px;
+			height: 100%;
+			background: #1a1a1a;
+			color: white;
+			overflow-y: auto;
+			transition: transform 0.3s ease-in-out;
+			transform: translateX(0);
+			z-index: 999;
+		}
+
+		#toggle-sidebar {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			padding: 0.5rem 1rem;
+			font-size: 1.2rem;
+			cursor: pointer;
+			border-radius: 5px;
+			z-index: 1001;
+		}
+
+		#sidebar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 300px;
+			height: 100vh;
+			z-index: 9999;
+			background: #222;
+			color: white;
+		}
+
+		body.sidebar-hidden #wrapper {
+			margin-right: 0;
+		}
+
+		body.video-active {
+			overflow: hidden;
+		}
+
+		body.content-visible #wrapper {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		body.content-visible #main {
+			display: block;
+			animation: fadeIn 1s ease forwards;
+		}
+
+		#video-background.slide-up {
+			animation: slideUpFadeOut 1s ease forwards;
+		}
+
+		.profile-section {
+			display: flex;
+			align-items: center;
+			gap: 30px;
+			margin-top: -80px;
+			margin-bottom: 40px;
+			margin-left: 40px;
+			margin-right: 40px;
+			position: relative;
+			z-index: 10;
+			flex-wrap: wrap;
+		}
+
+		.profile-photo img {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			border: 4px solid white;
+			object-fit: cover;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.profile-text {
+			background: #ffffff;
+			padding: 10px 10px;
+			line-height: 1.2;
+			border-radius: 12px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			flex: 1;
+			min-width: 250px;
+		}
+
+		.profile-text h3 {
+			margin-top: 10px;
+			color: black;
+		}
+
+		.timeline {
+			position: relative;
+			margin: 0 auto;
+			max-width: 960px;
+			padding-left: 2.25rem;
+		}
+
+		.timeline::before {
+			content: '';
+			position: absolute;
+			left: 12px;
+			top: 0;
+			bottom: 0;
+			width: 3px;
+			border-radius: 3px;
+		}
+
+		.timeline p {
+			position: relative;
+			margin: 1.25rem 0;
+			padding: 0.9rem 1rem;
+			border-radius: 8px;
+			max-width: 100%;
+		}
+
+		.timeline p::before {
+			content: '';
+			position: absolute;
+			left: -28px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 14px;
+			height: 14px;
+			border-radius: 50%;
+			box-sizing: content-box;
+		}
+
+		.date {
+			display: block;
+			font-size: 0.78rem;
+			margin-bottom: 0.25rem;
+			color: #fbfbff;
+		}
+
+		.title {
+			display: block;
+			font-weight: 700;
+			margin-bottom: 0.35rem;
+			color: #ffffff;
+		}
+
+		.desc {
+			margin: 0;
+			line-height: 1.4;
+			color: #e0e7ff;
+		}
+
+		.regular {
+			background: #fbfbff;
+		}
+
+		.regular::before {
+			border: 3px solid #4acaa8;
+			background: #ffffff;
+		}
+
+		.timeline.regular::before {
+			background: #e0e7ff;
+		}
+
+		.spaceship {
+			background: rgba(255, 255, 255, 0.05);
+			color: #f3f4f6;
+			box-shadow: 0 0 8px rgba(79, 70, 229, 0.5);
+		}
+
+		.spaceship::before {
+			border: 3px solid #4acaa8;
+			background: #0f172a;
+		}
+
+		.nose::before {
+			background: radial-gradient(circle at 30% 30%, #fbbf24, #f97316);
+		}
+
+		.body::before {
+			background: linear-gradient(180deg, #3b82f6, #1e3a8a);
+		}
+
+		.engine::before {
+			background: radial-gradient(circle at center, #ef4444, #b91c1c);
+		}
+
+		.wings::before {
+			background: linear-gradient(45deg, #10b981, #047857);
+		}
+
+		.sparkle {
+			list-style: none;
+			padding-left: 1.2em;
+		}
+
+		.sparkle li::before {
+			content: "✧";
+			color: gold;
+			display: inline-block;
+			width: 1em;
+			margin-left: -1.2em;
+		}
+
+		.reviews-container {
+			max-width: 800px;
+			width: 100%;
+			background: #0b1220;
+			border-radius: 12px;
+			padding: 20px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+			overflow-y: auto;
+			max-height: 80vh;
+			margin-bottom: 20px;
+		}
+
+		.review {
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 8px;
+			padding: 16px;
+			margin-bottom: 16px;
+		}
+
+		.review:last-child {
+			margin-bottom: 0;
+		}
+
+		.review h3 {
+			margin: 0;
+			font-size: 1.1em;
+		}
+
+		.review .relation {
+			font-size: 0.9em;
+			color: #9aa4b2;
+			margin-bottom: 4px;
+		}
+
+		.review .date {
+			font-size: 0.8em;
+			color: #9aa4b2;
+			margin-bottom: 8px;
+		}
+
+		.review p {
+			margin: 0;
+			line-height: 1.5;
+			color: #dbe9ff;
+		}
+
+		.image-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			flex-wrap: wrap;
+			margin-bottom: 2rem;
+		}
+
+		.image-row .image-column {
+			flex: 1 1 48%;
+			display: flex;
+			justify-content: center;
+		}
+
+		.image-row img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.two-column {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			flex-wrap: wrap;
+			gap: 2rem;
+		}
+
+		.two-column .column {
+			flex: 1 1 48%;
+			box-sizing: border-box;
+			text-align: center;
+		}
+
+		.features {
+			text-align: left;
+			margin-top: 1rem;
+		}
+
+		@media (max-width: 900px) {
+			.image-row,
+			.two-column {
+				flex-direction: column;
 				align-items: center;
-				gap: 30px;
-				margin-top: -80px;
-				margin-bottom: 40px;
-				margin-left: 40px;
-				margin-right: 40px;
-				position: relative;
-				z-index: 10;
-				flex-wrap: wrap;
 			}
 
-			.profile-photo img {
-				width: 150px;
-				height: 150px;
-				border-radius: 50%;
-				border: 4px solid white;
-				object-fit: cover;
-				box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-			}
-
-			.profile-text {
-				background: #ffffff;
-				padding: 10px 10px;
-				line-height: 1.2;
-				border-radius: 12px;
-				box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-				flex: 1;
-				min-width: 250px;
-			}
-
-			.profile-text h3 {
-				margin-top: 10px;
-				color: black;
-			}
-
-			.timeline { position: relative; margin: 0 auto; max-width: 960px; padding-left: 2.25rem; }
-			.timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 3px; border-radius: 3px; }
-			.timeline p { position: relative; margin: 1.25rem 0; padding: 0.9rem 1rem; border-radius: 8px; max-width: 100%; }
-			.timeline p::before { content: ''; position: absolute; left: -28px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; border-radius: 50%; box-sizing: content-box; }
-			.date { display: block; font-size: 0.78rem; margin-bottom: 0.25rem; color: #fbfbff; }
-			.title { display: block; font-weight: 700; margin-bottom: 0.35rem; color: #ffffff; }
-			.desc { margin: 0; line-height: 1.4; color: #e0e7ff; }
-
-			.regular { background: #fbfbff; }
-			.regular::before { border: 3px solid #4acaa8; background: #ffffff; }
-			.timeline.regular::before { background: #e0e7ff; }
-
-			.spaceship { background: rgba(255,255,255,0.05); color: #f3f4f6; box-shadow: 0 0 8px rgba(79,70,229,0.5); }
-			.spaceship::before { border: 3px solid #4acaa8; background: #0f172a; }
-			.nose::before { background: radial-gradient(circle at 30% 30%, #fbbf24, #f97316); }
-			.body::before { background: linear-gradient(180deg, #3b82f6, #1e3a8a); }
-			.engine::before { background: radial-gradient(circle at center, #ef4444, #b91c1c); }
-			.wings::before { background: linear-gradient(45deg, #10b981, #047857); }
-
-			.sparkle { 
-				list-style: none;
-  				padding-left: 1.2em;
-			}
-
-			.sparkle li::before {
-				content: "✧";
-				color: gold;
-				display: inline-block;
-				width: 1em;
-				margin-left: -1.2em;
-			}
-
-			.reviews-container {
-				max-width: 800px;
+			.image-row .image-column,
+			.two-column .column {
 				width: 100%;
-				background: #0b1220;
-				border-radius: 12px;
-				padding: 20px;
-				box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-				overflow-y: auto;
-				max-height: 80vh;
-				margin-bottom: 20px;
 			}
 
-			.review {
-				background: rgba(255,255,255,0.05);
-				border-radius: 8px;
-				padding: 16px;
-				margin-bottom: 16px;
+			.features {
+				text-align: center;
 			}
+		}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const video = document.getElementById('bg-video');
+			const videoBg = document.getElementById('video-background');
+			const body = document.body;
 
-			.review:last-child { 
-				margin-bottom: 0; 
-			}
-
-			.review h3 {
-				margin: 0;
-				font-size: 1.1em;
-			}
-				
-			.review .relation {
-				font-size: 0.9em;
-				color: #9aa4b2;
-				margin-bottom: 4px;
-			}
-
-			.review .date {
-				font-size: 0.8em;
-				color: #9aa4b2;
-				margin-bottom: 8px;
-			}
-
-			.review p {
-				margin: 0;
-				line-height: 1.5;
-				color: #dbe9ff;
-			}
-
-	    </style>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const video = document.getElementById('bg-video');
-				const videoBg = document.getElementById('video-background');
-				const body = document.body;
-
-				video.addEventListener('ended', function () {
-					videoBg.classList.add('slide-up');
-					setTimeout(() => {
-						body.classList.remove('video-active');
-						body.classList.add('content-visible');
-					}, 1000);
-				});
-
-				const toggleBtn = document.getElementById('toggle-sidebar');
-				toggleBtn.addEventListener('click', function () {
-					body.classList.toggle('sidebar-hidden');
-				});
+			video.addEventListener('ended', function () {
+				videoBg.classList.add('slide-up');
+				setTimeout(() => {
+					body.classList.remove('video-active');
+					body.classList.add('content-visible');
+				}, 1000);
 			});
-		</script>
-	</head>
-	<body class="is-preload sidebar-hidden video-active">
 
-		<button id="toggle-sidebar" style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
-			☰
-		</button>
+			const toggleBtn = document.getElementById('toggle-sidebar');
+			toggleBtn.addEventListener('click', function () {
+				body.classList.toggle('sidebar-hidden');
+			});
+		});
+	</script>
+</head>
 
-		<!-- Video -->
-		<div id="video-background">
-			<video autoplay muted id="bg-video">
+<body class="is-preload sidebar-hidden video-active">
+
+	<button id="toggle-sidebar" style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
+		☰
+	</button>
+
+	<!-- Video -->
+	<div id="video-background">
+		<video autoplay muted id="bg-video">
 			<source src="video/intro.mp4" type="video/mp4">
 			<source src="video/intro.webm" type="video/webm">
 			Your browser does not support the video tag.
-			</video>
-		</div>
+		</video>
+	</div>
 
-		<!-- Header -->
-			<section id="header" >
-				<header>
-					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
-					<h1 id="logo"><a href="#">Ted Chen</a></h1>
-					<p>Placeholder</p>
-				</header>
-				<nav id="nav">
-					<ul>
-						<li><a href="#one" class="active">About</a></li>
-						<li><a href="#two">Timeline</a></li>
-						<li><a href="#three">Hobbies and Works</a></li>
-						<li><a href="#four">Map</a></li>
-						<li><a href="#five">References</a></li>
-					</ul>
-				</nav>
-				<footer>
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-				</footer>
+	<!-- Header -->
+	<section id="header">
+		<header>
+			<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+			<h1 id="logo"><a href="#">Ted Chen</a></h1>
+			<p>Placeholder</p>
+		</header>
+		<nav id="nav">
+			<ul>
+				<li><a href="#one" class="active">About</a></li>
+				<li><a href="#two">Timeline</a></li>
+				<li><a href="#three">Hobbies and Works</a></li>
+				<li><a href="#four">Map</a></li>
+				<li><a href="#five">References</a></li>
+			</ul>
+		</nav>
+		<footer>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+		</footer>
+	</section>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- One -->
+			<section id="one">
+				<div class="image main" data-position="center">
+					<img src="images/banner.jpg" alt="" />
+				</div>
+
+				<div class="profile-section">
+					<div class="profile-photo">
+						<img src="images/avatar.jpg" alt="Profile Photo" />
+					</div>
+					<div class="profile-text">
+						<h3>Basic self-introduction</h3>
+					</div>
+				</div>
+
+				<div class="container">
+					<h3>⭐ Basic Info</h3>
+					<p>Name. Birth.</p>
+
+					<div class="timeline" role="list">
+						<p role="listitem" class="regular">
+							<span class="date">Jan 10, 2024</span>
+							<span class="title">Current School</span>
+							<span class="desc">Current School</span>
+						</p>
+
+						<p role="listitem" class="regular">
+							<span class="date">Jan 10, 2020</span>
+							<span class="title">Last School</span>
+							<span class="desc">Last School</span>
+						</p>
+					</div>
+					<h3>⭐ Skills / Awards</h3>
+					<center><img src="images/pic01.jpg" alt="Award" /></center>
+				</div>
 			</section>
 
-		<!-- Wrapper -->
-			<div id="wrapper" >
+			<!-- Two -->
+			<section id="two">
+				<div class="container">
+					<center><img src="images/rocket.gif" alt="rocket" /></center>
+					<h3>⭐ Timeline</h3>
+					<div class="timeline" role="list">
+						<p role="listitem" class="spaceship nose">
+							<span class="date">Placeholder</span>
+							<span class="title">Placeholder</span>
+							<span class="desc">Placeholder</span>
+						</p>
+						<p role="listitem" class="spaceship body">
+							<span class="date">Placeholder</span>
+							<span class="title">Placeholder</span>
+							<span class="desc">Placeholder</span>
+						</p>
+						<p role="listitem" class="spaceship wings">
+							<span class="date">Placeholder</span>
+							<span class="title">Placeholder</span>
+							<span class="desc">Placeholder</span>
+						</p>
+						<p role="listitem" class="spaceship engine">
+							<span class="date">Placeholder</span>
+							<span class="title">Placeholder</span>
+							<span class="desc">Placeholder</span>
+						</p>
+					</div>
+				</div>
+			</section>
 
-				<!-- Main -->
-					<div id="main">
+			<!-- Three -->
+			<section id="three">
+				<div class="container">
 
-						<!-- One -->
-							<section id="one">
-								<div class="image main" data-position="center">
-									<img src="images/banner.jpg" alt="" />
-								</div>
+					<!-- Top row -->
+					<div class="image-row">
+						<div class="image-column">
+							<img src="images/taurus.png" alt="taurus" width="128" height="240" />
+						</div>
+						<div class="image-column">
+							<img src="images/leo.png" alt="leo" width="214" height="240" />
+						</div>
+					</div>
 
-								<div class="profile-section">
-									<div class="profile-photo">
-										<img src="images/avatar.jpg" alt="Profile Photo" />
+					<!-- Bottom row -->
+					<div class="two-column">
+
+						<!-- Left: Hobbies -->
+						<div class="column">
+							<h3>⭐ Hobbies</h3>
+							<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus
+								integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.
+							</p>
+
+							<div class="features">
+								<article>
+									<a href="#" class="image"><img src="images/tintin.jpg" alt="" /></a>
+									<div class="inner">
+										<h4>Favorite Books</h4>
+										<ul class="sparkle">
+											<li>The Adventures of Tintin</li>
+											<li>Greek Mythology</li>
+											<li>Harry Potter</li>
+											<li>The Three-Body Problem</li>
+											<li>History of East Asia</li>
+										</ul>
 									</div>
-									<div class="profile-text">
-										<h3>Basic self-introduction</h3>
+								</article>
+
+								<article>
+									<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+									<div class="inner">
+										<h4>Favorite Sports</h4>
+										<ul class="sparkle">
+											<li>Badminton</li>
+											<li>Swimming</li>
+											<li>Riding</li>
+											<li>Fitness</li>
+										</ul>
 									</div>
-								</div>
+								</article>
 
-								<div class="container">
-									<h3>⭐ Basic Info</h3>
-									<p>Name. Birth.</p>
-
-									<div class="timeline" role="list">
-										<p role="listitem" class="regular">
-											<span class="date">Jan 10, 2024</span>
-											<span class="title">Current School</span>
-											<span class="desc">Current School</span>
-										</p>
-
-										<p role="listitem" class="regular">
-											<span class="date">Jan 10, 2020</span>
-											<span class="title">Last School</span>
-											<span class="desc">Last School</span>
-										</p>
+								<article>
+									<a href="#" class="image"><img src="images/walle.webp" alt="" /></a>
+									<div class="inner">
+										<h4>Favorite Movies / Shows</h4>
+										<ul class="sparkle">
+											<li>Cars</li>
+											<li>Wall-E</li>
+											<li>Zootopia</li>
+											<li>Monsters University</li>
+											<li>Coco</li>
+											<li>Marvel Cinematic Universe</li>
+											<li>Green Book</li>
+											<li>Oppenheimer</li>
+											<li>Inception</li>
+											<li>Chernobyl</li>
+										</ul>
 									</div>
-									<h3>⭐ Skills / Awards</h3>
-									<img src="images/pic01.jpg" alt="Award" />
-								</div>
-							</section>
+								</article>
+							</div>
+						</div>
 
-						<!-- Two -->
-							<section id="two">
-								<div class="container">
-									<h3>⭐ Timeline</h3>
-									<div class="timeline" role="list">
-									<p role="listitem" class="spaceship nose">
-									<span class="date">Placeholder</span>
-									<span class="title">Placeholder</span>
-									<span class="desc">Placeholder</span>
-									</p>
-									<p role="listitem" class="spaceship body">
-									<span class="date">Placeholder</span>
-									<span class="title">Placeholder</span>
-									<span class="desc">Placeholder</span>
-									</p>
-									<p role="listitem" class="spaceship wings">
-									<span class="date">Placeholder</span>
-									<span class="title">Placeholder</span>
-									<span class="desc">Placeholder</span>
-									</p>
-									<p role="listitem" class="spaceship engine">
-									<span class="date">Placeholder</span>
-									<span class="title">Placeholder</span>
-									<span class="desc">Placeholder</span>
-									</p>
+						<!-- Right: Works -->
+						<div class="column">
+							<h3>⭐ Works</h3>
+							<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus
+								integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.
+							</p>
+
+							<div class="features">
+								<article>
+									<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+									<div class="inner">
+										<h4>Ted's thinking and understanding about the universe</h4>
+										<p>Explanation</p>
 									</div>
-								</div>
-							</section>
+								</article>
+							</div>
+						</div>
+					</div>
 
-						<!-- Three -->
-							<section id="three">
-								<div class="container">
-									<center><img src="images/taurus.png" alt="taurus" width="256" height="480"/></center>
-									<h3>⭐ Hobbies</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Favorite Books</h4>
-												<p>
-													<ul class="sparkle">
-														<li>The Adventures of Tintin</li>
-														<li>Greek Mythology</li>
-														<li>Harry Potter</li>
-														<li>The Three-Body Problem</li>
-														<li>History of East Asia</li>
-													</ul>
-												</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Favorite Sports</h4>
-												<p>
-													<ul class="sparkle">
-														<li>Badminton</li>
-														<li>Swimming</li>
-														<li>Riding</li>
-														<li>Fitness</li>
-													</ul>
-												</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Favorite Movies / Shows</h4>
-												<p>
-													<ul class="sparkle">
-														<li>Cars</li>
-														<li>Wall-E</li>
-														<li>Zootopia</li>
-														<li>Monsters University</li>
-														<li>Coco</li>
-														<li>Marvel Cinematic Universe</li>
-														<li>Green Book</li>
-														<li>Oppenheimer</li>
-														<li>Inception</li>
-														<li>Chernobyl</li>
-													</ul>
-												</p>
-										</article>
-									</div>
-									<center><img src="images/leo.png" alt="leo" width="427" height="480"/></center>
-									<h3>⭐ Works</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Ted's thinking and understanding about the universe</h4>
-												<p>
-													Explanation
-												</p>
-											</div>
-										</article>
-									</div>
-								</div>
-							</section>
+				</div>
+			</section>
 
-						<!-- Four -->
-							<section id="four">
-								<div class="container">
-									<h3>⭐ Placeholder for the Map</h3>
-								</div>
-							</section>
 
-						<!-- Five -->
-							<section id="five">
-								<div class="container">
-									<h3>⭐ References</h3>
-										<div class="reviews-container">
-										<div class="review">
-										<h3>Ms. Mai</h3>
-										<div class="relation">Mother</div>
-										<p>As Ted's mom, i had witnessed Ted's growth for a whole journey so far, with a mindset that shifts from expecting Ted to achieve great success to allowing him to grow freely on his own. In my view, Ted Chen is a child who enjoys communicating, asking questions and playing pranks, but he can also calm down to read and think deeply. Perhaps it is precisely this innate pure curiosity and desire to explore that has determined his love for this major. When he was a kid, he is very fond of asking "Why", "Why is 1+1 equal to 2", "Why is the earth round"... He not only wants to know the answer, but also wants to know why he got this answer. I hope I can cultivate Ted to become "a man who can survive everywhere", and what i need to do is respect and support his choice.</p>
-										</div>
-										<div class="review">
-										<h3>Dr. Zhao</h3>
-										<div class="relation">Instructor</div>
-										<p>I am the professional instructor of the astronomical scientific research activities in Xinjiang in Aug, 2024. The impression Ted Chen gave me was he performed exceptionally well and embracing all the difficulties we met well, like bearing the large temperature difference between day and night, mosquito bites, and the fatigue from staying up late, etc. Ted always got up early to prepare for the observation and would kindly wake up another sleeping classmates. His insistance and passion could be identified as Ted is a student who is interested in astronomy and has sufficient curiosity about the exploration of the universe.</p>
-										</div>
-										<div class="review">
-										<h3>Meimei</h3>
-										<div class="relation">Teacher</div>
-										<p>I had guided and witnessed Ted's whole trip in Yale 2024 Summer School Program. During the summer school interview, Ted particularly hoped that the course arrangement would include content related to astronomy and thus he expressed his expectation sincerely to won the adjustment of scheduel successfully. He was confident and responsible for the questions he raised in class after his careful thinking. Also, i had noticed Ted was also an emotionally stable and observant child who can get along well with a group of peers with different personalities from the first time they met each other, and he was willing to take the initiative to help the teacher with tasks.</p>
-										</div>
-										<div class="review">
-										<h3>Remy</h3>
-										<div class="relation">Psychological Mentor</div>
-										<p>The first time i met Ted, i could tell at a glance that he was a child in pursuit of the essence of things who prefer to know why is the answer and understand the principle. So I advised Ms.Mai not to measure Ted by "scores" instead to protect Ted’s desire to explore the world freely. And after i realized Ted’s great desire to explore the origin of humanity and the end of the universe, i cooperated with Ms.Mai to provide a sufficiently relaxed environment allowed him to develop his interests. After twelve years acquaintance with Ted and Ms.Mai, i had became best friends with this mother and son, and this protecting relationship will develop continuously.</p>
-										</div>
-										</div>
-									<h3>⭐ Contact Me</h3>
-									<form method="post" action="#">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-											<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-											<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
-											<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" class="primary" value="Send Message" /></li>
-													<li><input type="reset" value="Reset Form" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-								</div>
-							</section>
+			<!-- Four -->
+			<section id="four">
+				<div class="container">
+					<h3>⭐ Placeholder for the Map</h3>
+				</div>
+			</section>
 
-						<!-- Five 
+			<!-- Five -->
+			<section id="five">
+				<div class="container">
+					<h3>⭐ References</h3>
+					<div class="reviews-container">
+						<div class="review">
+							<h3>Ms. Mai</h3>
+							<div class="relation">Mother</div>
+							<p>As Ted's mom, i had witnessed Ted's growth for a whole journey so far, with a mindset
+								that shifts from expecting Ted to achieve great success to allowing him to grow freely
+								on his own. In my view, Ted Chen is a child who enjoys communicating, asking questions
+								and playing pranks, but he can also calm down to read and think deeply. Perhaps it is
+								precisely this innate pure curiosity and desire to explore that has determined his love
+								for this major. When he was a kid, he is very fond of asking "Why", "Why is 1+1 equal to
+								2", "Why is the earth round"... He not only wants to know the answer, but also wants to
+								know why he got this answer. I hope I can cultivate Ted to become "a man who can survive
+								everywhere", and what i need to do is respect and support his choice.</p>
+						</div>
+						<div class="review">
+							<h3>Dr. Zhao</h3>
+							<div class="relation">Instructor</div>
+							<p>I am the professional instructor of the astronomical scientific research activities in
+								Xinjiang in Aug, 2024. The impression Ted Chen gave me was he performed exceptionally
+								well and embracing all the difficulties we met well, like bearing the large temperature
+								difference between day and night, mosquito bites, and the fatigue from staying up late,
+								etc. Ted always got up early to prepare for the observation and would kindly wake up
+								another sleeping classmates. His insistance and passion could be identified as Ted is a
+								student who is interested in astronomy and has sufficient curiosity about the
+								exploration of the universe.</p>
+						</div>
+						<div class="review">
+							<h3>Meimei</h3>
+							<div class="relation">Teacher</div>
+							<p>I had guided and witnessed Ted's whole trip in Yale 2024 Summer School Program. During
+								the summer school interview, Ted particularly hoped that the course arrangement would
+								include content related to astronomy and thus he expressed his expectation sincerely to
+								won the adjustment of scheduel successfully. He was confident and responsible for the
+								questions he raised in class after his careful thinking. Also, i had noticed Ted was
+								also an emotionally stable and observant child who can get along well with a group of
+								peers with different personalities from the first time they met each other, and he was
+								willing to take the initiative to help the teacher with tasks.</p>
+						</div>
+						<div class="review">
+							<h3>Remy</h3>
+							<div class="relation">Psychological Mentor</div>
+							<p>The first time i met Ted, i could tell at a glance that he was a child in pursuit of the
+								essence of things who prefer to know why is the answer and understand the principle. So
+								I advised Ms.Mai not to measure Ted by "scores" instead to protect Ted’s desire to
+								explore the world freely. And after i realized Ted’s great desire to explore the origin
+								of humanity and the end of the universe, i cooperated with Ms.Mai to provide a
+								sufficiently relaxed environment allowed him to develop his interests. After twelve
+								years acquaintance with Ted and Ms.Mai, i had became best friends with this mother and
+								son, and this protecting relationship will develop continuously.</p>
+						</div>
+					</div>
+					<h3>⭐ Contact Me</h3>
+					<form method="post" action="#">
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name"
+									placeholder="Name" /></div>
+							<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email"
+									placeholder="Email" /></div>
+							<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" />
+							</div>
+							<div class="col-12"><textarea name="message" id="message" placeholder="Message"
+									rows="6"></textarea></div>
+							<div class="col-12">
+								<ul class="actions">
+									<li><input type="submit" class="primary" value="Send Message" /></li>
+									<li><input type="reset" value="Reset Form" /></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<!--
 							<section id="five">
 								<div class="container">
 									<h3>Elements</h3>
@@ -888,19 +1089,17 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								</div>
 							</section>
 							-->
-					</div>
+		</div>
 
-			</div>
+	</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
-	</body>
-
-</html>
+</body>
