@@ -67,7 +67,7 @@
 			margin: 0;
 			padding: 0;
 			width: 100%;
-			overflow-x: hidden;	
+			overflow-x: hidden;
 		}
 
 		#wrapper {
@@ -79,6 +79,8 @@
 
 		section {
 			background-color: transparent;
+			margin: 0;
+			padding: 0;
 		}
 
 		@keyframes slideUp {
@@ -273,20 +275,20 @@
 			display: block;
 			font-size: 0.78rem;
 			margin-bottom: 0.25rem;
-			color: #fbfbff;
+			color: black;
 		}
 
 		.title {
 			display: block;
 			font-weight: 700;
 			margin-bottom: 0.35rem;
-			color: #ffffff;
+			color: black;
 		}
 
 		.desc {
 			margin: 0;
 			line-height: 1.4;
-			color: #e0e7ff;
+			color: black;
 		}
 
 		.regular {
@@ -303,7 +305,7 @@
 		}
 
 		.spaceship {
-			background: rgba(255, 255, 255, 0.05);
+			background: white;
 			color: #f3f4f6;
 			box-shadow: 0 0 8px rgba(79, 70, 229, 0.5);
 		}
@@ -427,6 +429,7 @@
 		}
 
 		@media (max-width: 900px) {
+
 			.image-row,
 			.two-column {
 				flex-direction: column;
@@ -441,6 +444,46 @@
 			.features {
 				text-align: center;
 			}
+		}
+
+		.reviews-container {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		.review {
+			display: flex;
+			align-items: center;
+			background: black;
+			border-radius: 12px;
+			padding: 15px;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		.review-photo {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-right: 15px;
+		}
+
+		.review-text {
+			flex: 1;
+		}
+
+		.review h3 {
+			margin: 0;
+			font-size: 1.2em;
+		}
+
+		.relation {
+			color: #777;
+			font-size: 0.9em;
+			margin-bottom: 8px;
 		}
 	</style>
 	<script>
@@ -494,6 +537,7 @@
 				<li><a href="#three">Hobbies and Works</a></li>
 				<li><a href="#four">Map</a></li>
 				<li><a href="#five">References</a></li>
+				<li><a href="#six">Contact</a></li>
 			</ul>
 		</nav>
 		<footer>
@@ -516,7 +560,7 @@
 			<!-- One -->
 			<section id="one">
 				<div class="image main" data-position="center">
-					<img src="images/banner.jpg" alt="" />
+					<img src="images/milkyway.webp" alt="Milky Way" />
 				</div>
 
 				<div class="profile-section">
@@ -689,57 +733,101 @@
 					<h3>⭐ References</h3>
 					<div class="reviews-container">
 						<div class="review">
-							<h3>Ms. Mai</h3>
-							<div class="relation">Mother</div>
-							<p>As Ted's mom, i had witnessed Ted's growth for a whole journey so far, with a mindset
-								that shifts from expecting Ted to achieve great success to allowing him to grow freely
-								on his own. In my view, Ted Chen is a child who enjoys communicating, asking questions
-								and playing pranks, but he can also calm down to read and think deeply. Perhaps it is
-								precisely this innate pure curiosity and desire to explore that has determined his love
-								for this major. When he was a kid, he is very fond of asking "Why", "Why is 1+1 equal to
-								2", "Why is the earth round"... He not only wants to know the answer, but also wants to
-								know why he got this answer. I hope I can cultivate Ted to become "a man who can survive
-								everywhere", and what i need to do is respect and support his choice.</p>
+							<img src="images/avatar.jpg" alt="Photo of Ms. Mai" class="review-photo">
+							<div class="review-text">
+								<h3>Ms. Mai</h3>
+								<div class="relation">Mother</div>
+								<p>As Ted's mom, I had witnessed Ted's growth for a whole journey so far, with a mindset
+									that shifts from expecting Ted to achieve great success to allowing him to grow
+									freely
+									on his own. In my view, Ted Chen is a child who enjoys communicating, asking
+									questions
+									and playing pranks, but he can also calm down to read and think deeply. Perhaps it
+									is
+									precisely this innate pure curiosity and desire to explore that has determined his
+									love
+									for this major. When he was a kid, he is very fond of asking "Why", "Why is 1+1
+									equal to
+									2", "Why is the earth round"... He not only wants to know the answer, but also wants
+									to
+									know why he got this answer. I hope I can cultivate Ted to become "a man who can
+									survive
+									everywhere", and what i need to do is respect and support his choice.</p>
+							</div>
 						</div>
+
 						<div class="review">
-							<h3>Dr. Zhao</h3>
-							<div class="relation">Instructor</div>
-							<p>I am the professional instructor of the astronomical scientific research activities in
-								Xinjiang in Aug, 2024. The impression Ted Chen gave me was he performed exceptionally
-								well and embracing all the difficulties we met well, like bearing the large temperature
-								difference between day and night, mosquito bites, and the fatigue from staying up late,
-								etc. Ted always got up early to prepare for the observation and would kindly wake up
-								another sleeping classmates. His insistance and passion could be identified as Ted is a
-								student who is interested in astronomy and has sufficient curiosity about the
-								exploration of the universe.</p>
+							<img src="images/avatar.jpg" alt="Photo of Dr. Zhao" class="review-photo">
+							<div class="review-text">
+								<h3>Dr. Zhao</h3>
+								<div class="relation">Instructor</div>
+								<p>I am the professional instructor of the astronomical scientific research activities
+									in
+									Xinjiang in Aug, 2024. The impression Ted Chen gave me was he performed
+									exceptionally
+									well and embracing all the difficulties we met well, like bearing the large
+									temperature
+									difference between day and night, mosquito bites, and the fatigue from staying up
+									late,
+									etc. Ted always got up early to prepare for the observation and would kindly wake up
+									another sleeping classmates. His insistence and passion could be identified as Ted
+									is a
+									student who is interested in astronomy and has sufficient curiosity about the
+									exploration of the universe.</p>
+							</div>
 						</div>
+
 						<div class="review">
-							<h3>Meimei</h3>
-							<div class="relation">Teacher</div>
-							<p>I had guided and witnessed Ted's whole trip in Yale 2024 Summer School Program. During
-								the summer school interview, Ted particularly hoped that the course arrangement would
-								include content related to astronomy and thus he expressed his expectation sincerely to
-								won the adjustment of scheduel successfully. He was confident and responsible for the
-								questions he raised in class after his careful thinking. Also, i had noticed Ted was
-								also an emotionally stable and observant child who can get along well with a group of
-								peers with different personalities from the first time they met each other, and he was
-								willing to take the initiative to help the teacher with tasks.</p>
+							<img src="images/avatar.jpg" alt="Photo of Meimei" class="review-photo">
+							<div class="review-text">
+								<h3>Meimei</h3>
+								<div class="relation">Teacher</div>
+								<p>I had guided and witnessed Ted's whole trip in Yale 2024 Summer School Program.
+									During
+									the summer school interview, Ted particularly hoped that the course arrangement
+									would
+									include content related to astronomy and thus he expressed his expectation sincerely
+									to
+									won the adjustment of schedule successfully. He was confident and responsible for
+									the
+									questions he raised in class after his careful thinking. Also, i had noticed Ted was
+									also an emotionally stable and observant child who can get along well with a group
+									of
+									peers with different personalities from the first time they met each other, and he
+									was
+									willing to take the initiative to help the teacher with tasks.</p>
+							</div>
 						</div>
+
 						<div class="review">
-							<h3>Remy</h3>
-							<div class="relation">Psychological Mentor</div>
-							<p>The first time i met Ted, i could tell at a glance that he was a child in pursuit of the
-								essence of things who prefer to know why is the answer and understand the principle. So
-								I advised Ms.Mai not to measure Ted by "scores" instead to protect Ted’s desire to
-								explore the world freely. And after i realized Ted’s great desire to explore the origin
-								of humanity and the end of the universe, i cooperated with Ms.Mai to provide a
-								sufficiently relaxed environment allowed him to develop his interests. After twelve
-								years acquaintance with Ted and Ms.Mai, i had became best friends with this mother and
-								son, and this protecting relationship will develop continuously.</p>
+							<img src="images/avatar.jpg" alt="Photo of Remy" class="review-photo">
+							<div class="review-text">
+								<h3>Remy</h3>
+								<div class="relation">Psychological Mentor</div>
+								<p>The first time i met Ted, i could tell at a glance that he was a child in pursuit of
+									the
+									essence of things who prefer to know why is the answer and understand the principle.
+									So
+									I advised Ms.Mai not to measure Ted by "scores" instead to protect Ted’s desire to
+									explore the world freely. And after i realized Ted’s great desire to explore the
+									origin
+									of humanity and the end of the universe, i cooperated with Ms.Mai to provide a
+									sufficiently relaxed environment allowed him to develop his interests. After twelve
+									years acquaintance with Ted and Ms.Mai, i had became best friends with this mother
+									and
+									son, and this protecting relationship will develop continuously.</p>
+
+							</div>
 						</div>
 					</div>
+				</div>
+			</section>
+
+			<!-- Six -->
+			<section id="six">
+				<div class="container">
 					<h3>⭐ Contact Me</h3>
-					<form method="post" action="#">
+					<form action="https://formspree.io/f/mjkpvdbo" method="POST">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name"
 									placeholder="Name" /></div>
@@ -753,6 +841,7 @@
 								<ul class="actions">
 									<li><input type="submit" class="primary" value="Send Message" /></li>
 									<li><input type="reset" value="Reset Form" /></li>
+									<input type="hidden" name="_subject" value="New message from website!">
 								</ul>
 							</div>
 						</div>
@@ -1101,5 +1190,3 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-
-</body>
