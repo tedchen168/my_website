@@ -345,26 +345,32 @@
 		}
 
 		.reviews-container {
-			max-width: 800px;
+			max-width: 1000px;
 			width: 100%;
 			background: #0b1220;
 			border-radius: 12px;
 			padding: 20px;
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-			overflow-y: auto;
-			max-height: 80vh;
 			margin-bottom: 20px;
+
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: auto auto;
+			gap: 20px;
 		}
 
 		.review {
+			flex: 0 0 320px;
 			background: rgba(255, 255, 255, 0.05);
 			border-radius: 8px;
 			padding: 16px;
-			margin-bottom: 16px;
+			scroll-snap-align: start;
+			display: flex;
+			flex-direction: column;
 		}
 
 		.review:last-child {
-			margin-bottom: 0;
+			margin-right: 0;
 		}
 
 		.review h3 {
@@ -378,17 +384,25 @@
 			margin-bottom: 4px;
 		}
 
-		.review .date {
-			font-size: 0.8em;
-			color: #9aa4b2;
-			margin-bottom: 8px;
-		}
-
 		.review p {
 			margin: 0;
 			line-height: 1.5;
 			color: #dbe9ff;
 		}
+
+		.reviews-container::-webkit-scrollbar {
+			height: 8px;
+		}
+
+		.reviews-container::-webkit-scrollbar-thumb {
+			background: #5a6b8a;
+			border-radius: 4px;
+		}
+
+		.reviews-container::-webkit-scrollbar-track {
+			background: #0b1220;
+		}
+
 
 		.image-row {
 			display: flex;
@@ -560,7 +574,7 @@
 			<!-- One -->
 			<section id="one">
 				<div class="image main" data-position="center">
-					<img src="images/milkyway.webp" alt="Milky Way" />
+					<img src="images/milkyway2.webp" alt="Milky Way" />
 				</div>
 
 				<div class="profile-section">
@@ -737,22 +751,16 @@
 							<div class="review-text">
 								<h3>Ms. Mai</h3>
 								<div class="relation">Mother</div>
-								<p>As Ted's mom, I had witnessed Ted's growth for a whole journey so far, with a mindset
-									that shifts from expecting Ted to achieve great success to allowing him to grow
-									freely
-									on his own. In my view, Ted Chen is a child who enjoys communicating, asking
-									questions
-									and playing pranks, but he can also calm down to read and think deeply. Perhaps it
-									is
-									precisely this innate pure curiosity and desire to explore that has determined his
-									love
-									for this major. When he was a kid, he is very fond of asking "Why", "Why is 1+1
-									equal to
-									2", "Why is the earth round"... He not only wants to know the answer, but also wants
-									to
-									know why he got this answer. I hope I can cultivate Ted to become "a man who can
-									survive
-									everywhere", and what i need to do is respect and support his choice.</p>
+								<p>As Ted’s mom, I think throughout this journey together my mindset has shifted as he
+									grew up. Once upon a time, I had great expectations from my son, but over the years
+									with his help I have come to realize that I should allow him to follow the path of
+									his own choosing as he grows up to become an independent young man. In my heart, Ted
+									is still that frivolous child who enjoys communicating. When he was a kid, he was
+									very fond of asking "Why?" "Why is 1+1 equal to 2?" "Why is the earth round?" He not
+									only wants to know the answer itself but also wants to know how this answer was
+									obtained. Perhaps it is this innate pure curiosity and desire to explore that
+									affirmed his love for this major. I hope I can cultivate Ted to become "a man who
+									can survive anywhere", and to do that I must respect and support his choices.</p>
 							</div>
 						</div>
 
@@ -761,41 +769,32 @@
 							<div class="review-text">
 								<h3>Dr. Zhao</h3>
 								<div class="relation">Instructor</div>
-								<p>I am the professional instructor of the astronomical scientific research activities
-									in
-									Xinjiang in Aug, 2024. The impression Ted Chen gave me was he performed
-									exceptionally
-									well and embracing all the difficulties we met well, like bearing the large
-									temperature
-									difference between day and night, mosquito bites, and the fatigue from staying up
-									late,
-									etc. Ted always got up early to prepare for the observation and would kindly wake up
-									another sleeping classmates. His insistence and passion could be identified as Ted
-									is a
-									student who is interested in astronomy and has sufficient curiosity about the
-									exploration of the universe.</p>
+								<p>I was Ted’s astronomy research supervisor during a scientific outing in Xinjiang in
+									August 2024. Ted Chen impressed me through his exceptional performances and ability
+									to overcome all difficulties, such as the large temperature difference between day
+									and night, frequent mosquito incursions, the fatigue from overnight research, etc.
+									Ted always got up early to prepare for the observation and would gently wake up
+									other sleeping associates. His endurance and passion are indicators of the kind of
+									person Ted is as both a student and as a person. These attributes are fueled by his
+									interest in astronomy and curiosity about the unknowns of the universe.</p>
 							</div>
 						</div>
 
 						<div class="review">
 							<img src="images/avatar.jpg" alt="Photo of Meimei" class="review-photo">
 							<div class="review-text">
-								<h3>Meimei</h3>
+								<h3>Ms. Meimei</h3>
 								<div class="relation">Teacher</div>
-								<p>I had guided and witnessed Ted's whole trip in Yale 2024 Summer School Program.
-									During
-									the summer school interview, Ted particularly hoped that the course arrangement
-									would
-									include content related to astronomy and thus he expressed his expectation sincerely
-									to
-									won the adjustment of schedule successfully. He was confident and responsible for
-									the
-									questions he raised in class after his careful thinking. Also, i had noticed Ted was
-									also an emotionally stable and observant child who can get along well with a group
-									of
-									peers with different personalities from the first time they met each other, and he
-									was
-									willing to take the initiative to help the teacher with tasks.</p>
+								<p>I was Ted’s counselor at the ACES Pivot Summer School Program at Yale in 2024. During
+									the summer school interview, Ted had expressed hope that the course arrangement
+									would include content related to astronomy which, under his insistence, an astronomy
+									roundtable discussion event was added with the help of the professors at Yale. His
+									confidence and responsibility for the questions he raised in class was encouraging.
+									Furthermore, I had noticed Ted was also an emotionally stable and observant child
+									who got along well with his peers and was willing to take the initiative to help the
+									teacher with various tasks. In fact, I believe it was thanks to this summer program
+									that Ted affirmed his willingness to pursue astronomy at a higher academic level.
+								</p>
 							</div>
 						</div>
 
@@ -804,18 +803,16 @@
 							<div class="review-text">
 								<h3>Remy</h3>
 								<div class="relation">Psychological Mentor</div>
-								<p>The first time i met Ted, i could tell at a glance that he was a child in pursuit of
-									the
-									essence of things who prefer to know why is the answer and understand the principle.
-									So
-									I advised Ms.Mai not to measure Ted by "scores" instead to protect Ted’s desire to
-									explore the world freely. And after i realized Ted’s great desire to explore the
-									origin
-									of humanity and the end of the universe, i cooperated with Ms.Mai to provide a
-									sufficiently relaxed environment allowed him to develop his interests. After twelve
-									years acquaintance with Ted and Ms.Mai, i had became best friends with this mother
-									and
-									son, and this protecting relationship will develop continuously.</p>
+								<p>The first time I met Ted, I could immediately tell that he was a child whose pursuit
+									of the essence of things makes him ask why until he fully understood the principles.
+									As thus, I advised Ms. Mai not to measure Ted by "scores", instead we should strive
+									to protect Ted’s desire to explore the world and beyond. After I realized Ted’s
+									great desire to explore the origins of humanity and the ends of the universe, I
+									cooperated with Ms. Mai to provide a sufficiently relaxed environment that allowed
+									him to develop his interests. After twelve years of acquainting with Ted and Ms.
+									Mai, I’ve become the best of friends with mother and son, and I hope that this
+									relationship will continue to prosper and develop over the coming years and decades.
+								</p>
 
 							</div>
 						</div>
